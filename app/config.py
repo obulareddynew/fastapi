@@ -2,9 +2,6 @@ from pydantic_settings import BaseSettings
 import os
 
 
-print("=== DEBUG: PRINTING ENVIRONMENT VARIABLES ===")
-for key, value in os.environ.items():
-    print(f"{key}: {value}")
 class Settings(BaseSettings):
     database_hostname: str = os.getenv("DATABASE_HOSTNAME")
     database_port: str = os.getenv("DATABASE_PORT")
@@ -16,8 +13,9 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
 
     class Config:
-        case_sensitive = True  # Ensures Railway env vars are read correctly
-        extra = "allow"  # Allows extra env variables if needed
+        env_file = ".env"
+
+
 
 
 settings = Settings()
