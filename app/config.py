@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 import os
 
+print(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 class Settings(BaseSettings):
     database_hostname: str = os.getenv("DATABASE_HOSTNAME")
     database_port: str = os.getenv("DATABASE_PORT")
