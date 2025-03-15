@@ -12,7 +12,9 @@ class Settings(BaseSettings):
     algorithm: str = os.getenv("ALGORITHM")
     access_token_expire_minutes: int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
 
-    # class Config:
-    #     env_file = ".env"
+    class Config:
+        case_sensitive = True  # Ensures Railway env vars are read correctly
+        extra = "allow"  # Allows extra env variables if needed
+
 
 settings = Settings()
