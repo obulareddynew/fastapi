@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings
 import os
 
-print(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+print("Time in Minutes",os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 class Settings(BaseSettings):
     database_hostname: str = os.getenv("DATABASE_HOSTNAME")
     database_port: str = os.getenv("DATABASE_PORT")
@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     algorithm: str = os.getenv("ALGORITHM")
     access_token_expire_minutes: int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
 
-    class Config:
-        env_file = ".env"
+    # class Config:
+    #     env_file = ".env"
 
 settings = Settings()
